@@ -1,0 +1,17 @@
+---
+  - name: configure-nginx-3
+    template:
+      src: files/nginx-3.conf
+      dest: /etc/nginx/sites-available/default
+
+  - name: new-site-nginx-3
+    file:
+      path: /var/www/testwebsite
+      state: directory
+      mode: '0755'
+
+  - name: new-index-page-nginx-3
+    copy:
+      src: files/index-3.html
+      dest: /var/www/testwebsite/index.html
+    notify: restart-nginx

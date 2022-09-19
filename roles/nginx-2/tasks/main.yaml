@@ -1,0 +1,17 @@
+---
+  - name: configure-nginx-2
+    template:
+      src: files/nginx-2.conf
+      dest: /etc/nginx/sites-available/default
+
+  - name: new-site-nginx-2
+    file:
+      path: /var/www/testwebsite
+      state: directory
+      mode: '0755'
+
+  - name: new-index-page-nginx-2
+    copy:
+      src: files/index-2.html
+      dest: /var/www/testwebsite/index.html
+    notify: restart-nginx

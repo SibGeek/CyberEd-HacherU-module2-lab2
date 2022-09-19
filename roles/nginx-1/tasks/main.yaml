@@ -1,0 +1,6 @@
+---
+  - name: configure-nginx-1
+    template:
+      src: files/nginx-1.conf
+      dest: /etc/nginx/sites-available/default
+    notify: restart-nginx

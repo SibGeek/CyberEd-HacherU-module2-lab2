@@ -1,0 +1,30 @@
+---
+  - name: nginx-installation-playbook
+    hosts: all
+    become: true
+    roles:
+      - nginx
+
+  - name: nginx-configuration-playbook
+    hosts: nginx-1
+    become: true
+    roles:
+      - nginx-1
+
+  - name: nginx-configuration-playbook
+    hosts: nginx-2
+    become: true
+    roles:
+      - nginx-2
+
+  - name: nginx-configuration-playbook
+    hosts: nginx-3
+    become: true
+    roles:
+      - nginx-3
+
+    handlers:
+      - name: restart-nginx
+        service:
+          name: nginx
+          state: restarted
