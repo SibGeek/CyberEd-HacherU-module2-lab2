@@ -3,14 +3,15 @@ Vagrant.configure("2") do |config|
   #config.ssh.username = "labs"
   #config.ssh.private_key_path = "labs_private"
   config.ssh.forward_agent = true
+  config.ssh.insert_key = false
 
-  #  config.vm.synced_folder ".", "/vagrant", disabled: true
+  #config.vm.synced_folder ".", "/vagrant", disabled: true
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
     vb.memory = "1024"
     vb.cpus = 1
-    #    vb.linked_clone = true
+    #vb.linked_clone = true
   end
 
   N = 3

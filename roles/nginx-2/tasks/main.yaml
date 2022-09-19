@@ -3,12 +3,14 @@
     template:
       src: files/nginx-2.conf
       dest: /etc/nginx/sites-available/default
+    notify: restart-nginx
 
   - name: new-site-nginx-2
     file:
       path: /var/www/testwebsite
       state: directory
       mode: '0755'
+    notify: restart-nginx
 
   - name: new-index-page-nginx-2
     copy:
